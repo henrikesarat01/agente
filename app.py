@@ -21,11 +21,12 @@ logger = logging.getLogger(__name__)
 PRODUCTS_FILE = "mapeamento.json"
 STORAGE_DIR = "data"
 
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+# Configurações
+openai_api_key = st.secrets["OPENAI_API_KEY"]
 assistant_id = st.secrets["ASSISTANT_ID"]
 
 # Inicialização do cliente OpenAI
-client = OpenAI(api_key=OPENAI_API_KEY)
+client = OpenAI(api_key=openai_api_key)
 
 # Variável global para logs de produtos
 if 'products_log' not in st.session_state:
