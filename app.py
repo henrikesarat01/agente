@@ -48,7 +48,7 @@ def init_components():
 
     # Obter informações do assistente para logar o modelo
     try:
-        assistant = client.beta.assistants.retrieve(assistant_id)
+        assistant = client.beta.assistants.retrieve(ASSISTANT_ID)
         st.session_state.assistant_info = assistant
     except Exception as e:
         logger.error(f"Erro ao carregar assistente: {e}")
