@@ -28,7 +28,6 @@ ASSISTANT_ID = st.secrets["ASSISTANT_ID"]
 # Inicialização do cliente OpenAI
 client = OpenAI(api_key=openai_api_key)
 print(client)  # deve mostrar objeto válido, não None
-print(assistant.model)
 
 # Variável global para logs de produtos
 if 'products_log' not in st.session_state:
