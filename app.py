@@ -39,7 +39,6 @@ if 'assistant_info' not in st.session_state:
 
 
 # Inicialização
-@st.cache_resource
 def init_components():
     storage = Storage(STORAGE_DIR)
     with open(PRODUCTS_FILE) as f:
@@ -54,6 +53,7 @@ def init_components():
         logger.error(f"Erro ao carregar assistente: {e}")
         st.error(f"Erro ao carregar assistente: {e}")
         st.session_state.assistant_info = None
+
 
 
     return storage, products
