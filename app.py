@@ -28,6 +28,7 @@ ASSISTANT_ID = st.secrets["ASSISTANT_ID"]
 # Inicialização do cliente OpenAI
 client = OpenAI(api_key=openai_api_key)
 print(client)  # deve mostrar objeto válido, não None
+print(assistant.model)
 
 # Variável global para logs de produtos
 if 'products_log' not in st.session_state:
@@ -48,14 +49,13 @@ def init_components():
 
     # Obter informações do assistente para logar o modelo
     try:
-        assistant = client.beta.assistants.retrieve(ASSISTANT_ID)
+        assistant = client.beta.assistants.retrieve(assistant_id)
         st.session_state.assistant_info = assistant
-        logger.info(f"Assistente carregado: ID {ASSISTANT_ID}")
-        logger.info(f"Modelo configurado no assistente: {assistant.model}")
     except Exception as e:
-        logger.error(f"Erro ao recuperar informações do assistente: {str(e)}")
-        st.error(f"Erro ao carregar assistente: {str(e)}")
-        st.stop()
+        logger.error(f"Erro ao carregar assistente: {e}")
+        st.error(f"Erro ao carregar assistente: {e}")
+        st.session_state.assistant_info = None
+
 
     return storage, products
 
