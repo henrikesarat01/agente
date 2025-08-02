@@ -20,8 +20,9 @@ logger = logging.getLogger(__name__)
 # Configurações
 PRODUCTS_FILE = "mapeamento.json"
 STORAGE_DIR = "data"
-OPENAI_API_KEY = "cheve_api"
-ASSISTANT_ID = "assistente_chave"
+
+openai.api_key = st.secrets["OPENAI_API_KEY"]
+assistant_id = st.secrets["ASSISTANT_ID"]
 
 # Inicialização do cliente OpenAI
 client = OpenAI(api_key=OPENAI_API_KEY)
