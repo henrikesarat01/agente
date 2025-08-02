@@ -127,7 +127,13 @@ def send_message():
     try:
         with st.spinner("ANA está pensando..."):
             # Log do modelo sendo usado
+            if st.session_state.assistant_info:
             logger.info(f"Executando assistente com modelo: {st.session_state.assistant_info.model}")
+        else:
+            logger.error("❌ Assistente não carregado: st.session_state.assistant_info é None")
+            st.error("Erro: Não foi possível carregar as informações do assistente. Verifique o ASSISTANT_ID.")
+            st.stop()
+
 
             run = client.beta.threads.runs.create(
                 thread_id=st.session_state.assistant_thread,
