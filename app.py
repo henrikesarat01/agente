@@ -23,7 +23,7 @@ STORAGE_DIR = "data"
 
 # Configurações
 openai_api_key = st.secrets["OPENAI_API_KEY"]
-assistant_id = st.secrets["ASSISTANT_ID"]
+ASSISTANT_ID = st.secrets["ASSISTANT_ID"]
 
 # Inicialização do cliente OpenAI
 client = OpenAI(api_key=openai_api_key)
